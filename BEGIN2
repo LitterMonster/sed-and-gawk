@@ -1,0 +1,5 @@
+#!/bin/bash
+#Author:Zhangtao
+#Date & Time: 2016-01-20-22:21:35
+#Description:Testing BEGIN
+gawk 'BEGIN {print "The data4 File Contents:"} { print $0 }' data4
