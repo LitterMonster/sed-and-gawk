@@ -1,0 +1,8 @@
+sed '{s/System Admnistrators/Desktop User/;N
+s/System\nAdministrator/Desktop User/
+}' data2
+
+sed 'N; /System\nAdministrator/d' data2 #这会删除两行
+sed 'N; /System\nAdministrator/D' data2 #这只会删除匹配的第一行
+sed '/^$/{N; /header/D}' data3
+sed -n 'N; /System\nAdministrator/P' data2
