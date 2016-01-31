@@ -1,5 +1,0 @@
-#!/bin/bash
-#Author:Zhangtao
-#Date & Time: 2016-01-20-21:20:26
-#Description:Testing sed -e option
-echo "This is test"
