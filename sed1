@@ -3,6 +3,53 @@ s/System\nAdministrator/Desktop User/
 }' data2
 
 sed 'N; /System\nAdministrator/d' data2 #这会删除两行
+
 sed 'N; /System\nAdministrator/D' data2 #这只会删除匹配的第一行
+
 sed '/^$/{N; /header/D}' data3
+
 sed -n 'N; /System\nAdministrator/P' data2
+
+sed -n '/first/{
+    h
+    p
+    n
+    p
+    g
+    p
+}' data2
+
+sed -n '/header/!p' data4
+
+sed '$!N; s/System.Administrator/Desktop User/' data4 
+#这里$表示数据流中的最后一行文本，所以当sed编辑器到了最后一行时，他没有执行N
+命令。但它对所有其他行都执行了这个命令。
+
+sed -n '{1!G; h; $p}' data2 #将data2的文本倒叙输出，可以用实用程序tac
+
+跳转:b
+echo "This. is. a. test. to. remove. commands." | sed -n '{
+    :start
+    s/\.//p
+    b start
+}'
+
+echo "This. is. a. test. to. remove. commands." | sed -n '{
+    :start
+    s/\.//p
+    /\./b start
+}'
+#上例不会无限循环
+
+测试:t
+sed '{
+    s/first/matched
+    t
+    s/This is the/No match on/
+    }' data2
+
+echo "This. is. a. test. to. remove. commands." | sed -n '{
+    :start
+    s/\.//p
+    t start
+}'
