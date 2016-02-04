@@ -53,3 +53,23 @@ echo "This. is. a. test. to. remove. commands." | sed -n '{
     s/\.//p
     t start
 }'
+
+模式替换
+echo "The cat sleeps in his hat." | sed 's/cat/"cat"'
+
+and符号
+echo "The hat sleeps in his hat." | sed 's/.at/"&"/g'
+The ".at" sleeps in his ".at"
+
+替换单独的单词
+echo "The System Administrator manual" | sed '
+s/\(System\) Administrator/\1 User/'
+
+echo "The furry cat is pretty" | sed 's/furry \(.at\)/\1/'
+
+echo "1234567" | sed '{
+    :start
+    s/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/
+    t
+    start
+}'
