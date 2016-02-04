@@ -105,3 +105,8 @@ sed '{
     :start
     /^\n*/{$d;N;b start}
 }' data2
+
+删除HTML标签
+  错误的做法 sed 's/<.*>//g' index.html  sed理解为将这个脚本字面解释为大于号
+  和小于号之间的任何文本，包括其他的大于号和小于号
+  正确的做法 sed 's/<[^>]*>//g;/^$/d' index.html
