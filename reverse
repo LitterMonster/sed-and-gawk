@@ -1,0 +1,10 @@
+#!/bin/bash
+#Author:Zhangtao
+#Date & Time: 2016-02-04-21:41:07
+#Description: shell wrapper for sed editor script to reverse lines
+
+sed -n '{
+1!G
+h
+$p
+}' $1
