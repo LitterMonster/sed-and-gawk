@@ -6,3 +6,5 @@
 history > history_temp
 cat history_temp | grep "gawk " > gawk_temp
 sed '{s/^[0-9]\{1,\}:[ ]*[0-9]\{4\}//}' gawk_temp 
+rm history_temp
+rm gawk_temp

@@ -1,0 +1,44 @@
+  gawk '{print $1}' /etc/passwd
+  gawk '{FS=:;print $1}' /etc/passwd
+  gawk '{F=12;print F}' /etc/passwd
+  gawk 'BEGIN{FS="."}{print $1, $2, $3}' data1 
+  gawk 'BEGIN{FS="."}{print $1 $2, $3}' data1 
+  gawk 'BEGIN{FS="."}{print $1+$2+$3}' data1 
+  gawk 'BEGIN{FS="."}{print $1 $2 $3}' data1 
+  gawk 'BEGIN{FS="."}{print $1,$2,$3}' data1 
+  gawk 'BEGIN{FS="."}{print "$1,$2,$3"}' data1 
+  gawk 'BEGIN{FS="."}{print "{$1},$2,$3"}' data1 
+  gawk 'BEGIN{FS="."}{print $0}' data1 
+  gawk 'BEGIN{FS=".";OFS="-"}{print $1,$2,$3}' data1
+  gawk 'BEGIN{FS=".";OFS="--"}{print $1,$2,$3}' data1
+  gawk 'BEGIN{FS=".";OFS="<-->"}{print $1,$2,$3}' data1
+  gawk 'BEGIN{FIELDWIGTHS="3 5 2 5"}{print $1,$2,$3,$4}' datalb 
+  gawk 'BEGIN{print FILENAME}' data
+  gawk 'BEGIN{print FILENAME}' data1
+  gawk 'BEGIN{print $FILENAME}' data1
+  gawk 'BEGIN{print FILENAME}' data1
+  gawk 'BEGIN{print ARGC, FILENAME}' 
+  gawk 'BEGIN{print ARGC, FILENAME}' data
+  gawk 'BEGIN{print ARGC, FILENAME}' data1
+  gawk 'BEGIN{print ARGC, ARGV[0],FILENAME}' data1
+  gawk 'BEGIN{print ARGC, ARGV[1],FILENAME}' data1
+  gawk 'BEGIN{print ARGC, ARGV[1],NF}' data1
+  grep gawk history 
+  grep "gawk " history 
+  grep "gawk " history > gawk
+  gawk 'BEGIN{print $3,$4,$5}' gawk 
+  mv gawk gawk1
+  gawk 'BEGIN{print $3,$4,$5}' gawk1
+  gawk 'BEGIN{print $2,$4,$5}' gawk1
+  gawk 'BEGIN{FS=" "print $2,$4,$5}' gawk1
+  gawk 'BEGIN{FS=" ";print $2,$4,$5}' gawk1
+  gawk 'BEGIN{FS=" ";print $2}' gawk1
+  gawk 'BEGIN{FS="  ";print $2}' gawk1
+  cat history | grep "gawk " > gawk1 
+  git commit -m "Abstract gawk command from histoty"
+  gawk '{print ENVIRON["HOME"]}'
+  gawk 'BEGIN{print ENVIRON["HOME"]}'
+  gawk 'BEGIN{print ENVIRON["HOME"],ENVIRON["PATH"]}'
+  gawk 'BEGIN{print ENVIRON["HOME"] "\n" 'ENVIRON["PATH"]}'
+  gawk 'BEGIN{print ENVIRON["HOME"] "\n" ;ENVIRON["PATH"]}'
+  gawk 'BEGIN{print ENVIRON["HOME"] "\n" ;print ENVIRON["PATH"]}'
