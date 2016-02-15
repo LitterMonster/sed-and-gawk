@@ -1,0 +1,8 @@
+#!/bin/bash
+#Author:Zhangtao
+#Date & Time: 2016-02-15-23:13:50
+#Description:Abstract gawk commands from history
+
+history > history_temp
+cat history_temp | grep "gawk " > gawk_temp
+sed '{s/^[0-9]\{1,\}:[ ]*[0-9]\{4\}//}' gawk_temp 

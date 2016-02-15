@@ -1,0 +1,25 @@
+  gawk '{print $1}' /etc/passwd
+  gawk '{FS=:;print $1}' /etc/passwd
+  gawk '{F=12;print F}' /etc/passwd
+  gawk 'BEGIN{FS="."}{print $1, $2, $3}' data1 
+  gawk 'BEGIN{FS="."}{print $1 $2, $3}' data1 
+  gawk 'BEGIN{FS="."}{print $1+$2+$3}' data1 
+  gawk 'BEGIN{FS="."}{print $1 $2 $3}' data1 
+  gawk 'BEGIN{FS="."}{print $1,$2,$3}' data1 
+  gawk 'BEGIN{FS="."}{print "$1,$2,$3"}' data1 
+  gawk 'BEGIN{FS="."}{print "{$1},$2,$3"}' data1 
+  gawk 'BEGIN{FS="."}{print $0}' data1 
+  gawk 'BEGIN{FS=".";OFS="-"}{print $1,$2,$3}' data1
+  gawk 'BEGIN{FS=".";OFS="--"}{print $1,$2,$3}' data1
+  gawk 'BEGIN{FS=".";OFS="<-->"}{print $1,$2,$3}' data1
+  gawk 'BEGIN{FIELDWIGTHS="3 5 2 5"}{print $1,$2,$3,$4}' datalb 
+  gawk 'BEGIN{print FILENAME}' data
+  gawk 'BEGIN{print FILENAME}' data1
+  gawk 'BEGIN{print $FILENAME}' data1
+  gawk 'BEGIN{print FILENAME}' data1
+  gawk 'BEGIN{print ARGC, FILENAME}' 
+  gawk 'BEGIN{print ARGC, FILENAME}' data
+  gawk 'BEGIN{print ARGC, FILENAME}' data1
+  gawk 'BEGIN{print ARGC, ARGV[0],FILENAME}' data1
+  gawk 'BEGIN{print ARGC, ARGV[1],FILENAME}' data1
+  gawk 'BEGIN{print ARGC, ARGV[1],NF}' data1
