@@ -1,0 +1,19 @@
+#!/bin/bash
+#Author:Zhangtao
+#Date & Time: 2016-02-18-22:46:13
+#Description: Automatically generate awk script
+
+for i in $*
+do
+    file=${i}.awk
+    if [ -e $file ]
+    then
+        echo "$file existed!!!"
+    else
+        touch $file
+        echo "#Author: `hostname`
+#Date & Time: `date +%y-%m-%d-%H:%M:%S`
+#Description:" >> $file
+        echo "$file is created successfuly!"
+    fi
+done
