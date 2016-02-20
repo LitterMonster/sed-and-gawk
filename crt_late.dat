@@ -1,0 +1,11 @@
+#!/bin/bash
+#Author:Zhangtao
+#Date & Time: 2016-02-20-21:05:35
+#Description:
+for i in {1..90000}
+do
+    for j in {1..10}
+    do
+        echo "$RANDOM $j"
+    done
+done >> late.dat

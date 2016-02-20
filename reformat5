@@ -1,0 +1,52 @@
+#!/bin/bash
+#Author:Zhangtao
+#Date & Time: 2016-02-20-20:50:35
+#Description:
+awk '
+BEGIN {
+Sys_Sort = "sort -n >> today_rpt4"
+Result = "today_rpt4"
+#改变字段切割的方式
+FS = "[ \t:]+"
+"date" | getline
+print "Today is ", $2, $3 > Result
+print "==============" > Result
+print "ID Number Arrive Time" > Result
+
+close(Result)
+late_file = $2"late.dat"
+while(getline < late_file > 0)
+    cnt[$1] = $2
+close(late_file)
+}
+
+{
+    arrival = HM_to_M($2, $3)
+    if (arrival > 480) {
+        mark = "*"
+        cnt[$1]++
+    } else {
+        mark=" "
+}
+message = cnt[$1] ? cnt[$1] : ""
+printf("%s %2d:%2d %5s %s\n", $1, $2, $3, mark, message) | Sys_Sort
+
+total += arrival
+
+}
+
+END {
+close(Result)
+close(Sys_Sort)
+
+printf(" Average arrival time : %d:%d\n", total/NR/60, (total/NR)%60) >> Result
+
+for (any in cnt)
+    print any, cnt[any] > late_file
+}
+
+function HM_to_M(hour, min)
+{
+    return hour * 60 + min
+}
+' $*
