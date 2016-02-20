@@ -1,0 +1,30 @@
+#!/bin/bash
+gawk '
+BEGIN {
+FS = "[ \t:]+"
+"date" | getline
+print "Today is ", $2, $3 > "today_rpt4"
+print "================" > "today_rpt4"
+print "ID Number Arrive Time" > "today_rpt4"
+close("today_rpt4")
+Sys_call = "sort -n >> today_rpt4"
+}
+
+{
+    arrival = HM_to_M($2, $3)
+    printf(" %s %s:%s %s\n", $1, $2, $3, arrival > 480 ? "*" : "") \
+        | "sort -n >> today_rpt4"
+    total += arrival
+}
+
+END {
+close("today_rpt4")
+close(Sys_call)
+
+printf("Average arrival time : %d:%d\n", total/NR/60, (total/NR)%60) >> "today_rpt4"
+}
+
+function HM_to_M(hour, min) {
+    return hour * 60 + min
+}
+' $*

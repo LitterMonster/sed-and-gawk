@@ -1,0 +1,36 @@
+#!/bin/bash
+#Author: zhangtao
+#Date & Time: 16-02-20-17:32:00
+#Description:
+#{
+#    getline
+#    hour = substr($2, 1, length($2) - 3 )
+#    minute = substr($2, length($2) - 2)
+#    if (hour < 8)
+#        print $0 | "sort -n "
+#}
+awk '
+BEGIN {
+    FS="[ \t:]+"
+    "date" | getline
+    print "Today is ", $2, $3 > "today_rpt3"
+    print "=================" > "today_rpt3"
+    print "ID Number Arrival Time" > "today_rpt3"
+    close("today_rpt3")
+}
+{
+    arrival = HM_to_M($2, $3)
+    printf(" %s %s:%s %s\n", $1, $2, $3, arrival > 480 ? "*" : "") | "sort -n >> today_rpt3"
+    total += arrival
+}
+END {
+    close("today_rpt3")
+    close("sort -n >> today_rpt3")
+    printf(" Average arrival time: %d:%d\n", total/NR/60, (total/NR)%60) >> "today_rpt3"
+}
+
+function HM_to_M(hour, min)
+{
+    return hour*60 + min
+}
+' $*
