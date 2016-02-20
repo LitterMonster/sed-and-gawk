@@ -1,0 +1,16 @@
+#!/bin/bash
+#Author:Zhangtao
+#Date & Time: 2016-02-20-17:02:10
+#Description: Testing how to print all arguments in awk
+awk '
+BEGIN {
+print "Welcome to awk communication tool!"
+}
+{
+while(1)
+    {
+        print "Enter what you want to say:"
+        getline 
+        print "Are you say", $0 "?"
+    }
+    }' $*
