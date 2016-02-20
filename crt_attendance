@@ -1,0 +1,22 @@
+#!/bin/bash
+#Author:Zhangtao
+#Date & Time: 2016-02-20-15:35:23
+#Description: Attendance table
+for i in {1..20}
+do
+    for j in 7 8
+    do
+        for k in {1..59}
+        do
+            if [ $k -lt 10 ]
+            then
+                echo "$RANDOM ${j}:0${k}"
+            else
+                echo "$RANDOM ${j}:${k}"
+            fi
+
+        done
+    done
+done > attendance
+
+
