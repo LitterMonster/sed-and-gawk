@@ -1,0 +1,32 @@
+#!/bin/bash
+#Author:Zhangtao
+#Date & Time: 2016-02-23-20:40:38
+#Description:
+gawk '
+BEGIN {
+print "请输入排列的元素，个元素间请用空白隔开"
+getline
+permutation($0, "")
+printf("\n共%d中排列方式\n", counter)
+}
+
+function permutation(main_lst, buffer, new_main_lst, nf, i, j)
+{
+    $0 = main_lst
+    nf = NF
+    if (nf == 1)
+        {
+            counter++
+            return
+        }
+    else 
+        for (i = 1; i < nf; i++)
+            {
+                $0 = main_lst
+                new_main_lst = ""
+                for (j = 1; j <= nf; j++)
+                    if (j != i)
+                        new_main_lst = new_main_lst "" $j
+                    permutation(new_main_lst, buffer, " ", $i)
+            }
+}' $*
