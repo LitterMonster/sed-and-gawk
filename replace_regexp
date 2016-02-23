@@ -1,0 +1,13 @@
+#!/bin/bash
+#Author:Zhangtao
+#Date & Time: 2016-02-23-22:35:15
+#Description:Replace words with regexp
+awk '
+{
+    while(match($0, /program[0-9]+\.f/))
+        {
+            Replace = "[Ref : " substr($0, RSTART, RLENGTH - 2) ".c]"
+            sub(/program[0-9]+\.f/, Replace)
+        }
+        print
+    }' $*
